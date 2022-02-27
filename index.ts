@@ -1,19 +1,10 @@
 import {pair, left, right} from './pair';
-import {List, isEmpty, EmptyList} from './list';
+import {List, isEmpty, EmptyList, makeList} from './list';
 
 const dispatch = () => {};
 
 const select = () => {};
 
-
-const makeList = <T>(array: T[]): List<T> => {
-  if (array.length === 0) {
-    return "NULL";
-  }
-
-  const rest = array.slice(1, array.length);
-  return pair(array[0], makeList(rest));
-};
 
 const forEach = <T>(list: List<T>, effect: (item: T) => void) => {
   if (isEmpty(list)) {
