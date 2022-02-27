@@ -1,20 +1,10 @@
+import {pair, left, right} from './pair';
+import {List, isEmpty, EmptyList} from './list';
+
 const dispatch = () => {};
 
 const select = () => {};
 
-interface Pair<L, R> {
-  left: L;
-  right: R;
-}
-
-const left = <L, R>(pair: Pair<L, R>) => pair.left;
-const right = <L, R>(pair: Pair<L, R>) => pair.right;
-const pair = <L, R>(left: L, right: R) => ({ left, right });
-
-const EmptyList = "NULL";
-type EmptyList = "NULL";
-
-type List<L> = Pair<L, List<L>> | EmptyList;
 
 const makeList = <T>(array: T[]): List<T> => {
   if (array.length === 0) {
@@ -24,8 +14,6 @@ const makeList = <T>(array: T[]): List<T> => {
   const rest = array.slice(1, array.length);
   return pair(array[0], makeList(rest));
 };
-
-const isEmpty = <T>(list: List<T>): list is "NULL" => list === "NULL";
 
 const forEach = <T>(list: List<T>, effect: (item: T) => void) => {
   if (isEmpty(list)) {
