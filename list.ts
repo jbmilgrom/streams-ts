@@ -5,11 +5,11 @@ type EmptyList = typeof EmptyList;
 
 export type List<L> = Pair<L, List<L>> | EmptyList;
 
-export const isEmpty = <T>(list: List<T>): list is EmptyList => list === "NULL";
+export const isEmpty = <T>(list: List<T>): list is EmptyList => list === EmptyList;
 
 export const makeList = <T>(array: T[]): List<T> => {
   if (array.length === 0) {
-    return "NULL";
+    return EmptyList;
   }
 
   const rest = array.slice(1, array.length);
