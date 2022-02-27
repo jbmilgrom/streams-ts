@@ -1,10 +1,9 @@
-import {pair, left, right} from './pair';
-import {List, isEmpty, EmptyList, makeList} from './list';
+import { pair, left, right } from "./pair";
+import { List, isEmpty, EmptyList, makeList } from "./list";
 
 const dispatch = () => {};
 
 const select = () => {};
-
 
 const forEach = <T>(list: List<T>, effect: (item: T) => void) => {
   if (isEmpty(list)) {
@@ -25,11 +24,11 @@ const map = <T>(list: List<T>, fn: (item: T) => T): List<T> => {
 };
 
 const enumerateInterval = (low: number, high: number): List<number> => {
-    if (low > high) {
-        return EmptyList;
-    }
-    return pair(low, enumerateInterval(low + 1, high));
-}
+  if (low > high) {
+    return EmptyList;
+  }
+  return pair(low, enumerateInterval(low + 1, high));
+};
 
 const indexesUpTo6 = makeList([0, 1, 2, 3, 4, 5, 6]);
 printList(map(indexesUpTo6, (i) => 2 * i));
